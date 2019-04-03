@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Notes</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Notes</h1>
+
+    <div id="app">
+      <article class="note" v-for="note in notes" :key="note.key">
+        <div class="vote">
+          <div class="up" @click="upVote(note)">⬆</div>
+          <div class="score">{{ note.score }}</div>
+          <div class="down" @click="downVote(note)">⬇</div>
+        </div>
+        <div class="content">
+          <div>{{ note.title }}</div>
+          <div>{{ note.body }}</div>
+        </div>
+        <div class="delete" @click="remove(note)">×</div>
+      </article>
+      <input
+        class="new-note"
+        autofocus
+        autocomplete="off"
+        placeholder="note"
+        v-model="newNote"
+        @keyup.enter="addNote"
+      />
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <!-- <script src="https://unpkg.com/vue@2.6.10/dist/vue.js"></script> -->
+    <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
+    <!-- <script src="https://unpkg.com/vuefire@next/dist/vuefire.js"></script> -->
+    <script src="https://unpkg.com/vue-firestore@0.3.21/dist/vue-firestore.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
