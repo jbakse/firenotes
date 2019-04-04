@@ -4,9 +4,16 @@ html {
   font-family: "Raleway", sans-serif;
 }
 
+#app {
+  max-width: 480px;
+}
+
+.notes {
+  padding-left: 0;
+}
+
 .note {
   margin-bottom: 10px;
-  max-width: 480px;
   display: flex;
 }
 
@@ -15,11 +22,23 @@ html {
   color: white;
   width: 40px;
   text-align: center;
+  /* border: 1px solid red; */
 }
 
-.up,
-.down {
-  cursor: pointer;
+.score {
+  width: 100%;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  color: white;
+  background: none;
+  text-align: center;
+}
+
+.score::-webkit-inner-spin-button,
+.score::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .content {
@@ -27,6 +46,14 @@ html {
   margin-left: 10px;
   padding: 10px;
   flex-grow: 1;
+}
+
+.title,
+.new-note-title {
+  border: none;
+  outline: none;
+  font-family: "Raleway", sans-serif;
+  font-size: 20px;
 }
 
 .delete {
@@ -37,4 +64,21 @@ html {
   text-align: center;
   line-height: 40px;
   cursor: pointer;
+}
+
+.button {
+  cursor: pointer;
+}
+
+.notes-move {
+  transition: transform 0.2s;
+}
+
+.new-note-title {
+  border: 1px solid black;
+  margin-left: 50px;
+  margin-right: 50px;
+  width: calc(100% - 100px);
+  box-sizing: border-box;
+  padding: 10px;
 }

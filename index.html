@@ -8,33 +8,50 @@
     <h1>Notes</h1>
 
     <div id="app">
-      <article class="note" v-for="note in notes" :key="note.key">
-        <div class="vote">
-          <div class="up" @click="upVote(note)">⬆</div>
-          <div class="score">{{ note.score }}</div>
-          <div class="down" @click="downVote(note)">⬇</div>
-        </div>
-        <div class="content">
-          <div>{{ note.title }}</div>
-          <div>{{ note.body }}</div>
-        </div>
-        <div class="delete" @click="remove(note)">×</div>
-      </article>
+      <transition-group tag="ul" class="notes" name="notes">
+        <li class="note" v-for="note in notes" v-bind:key="note.id">
+          <div class="vote">
+            <div class="up button" @click="incrementScore(note, 1)">⬆</div>
+            <!-- <div class="score">{{ note.score }}</div> -->
+            <input
+              class="score"
+              v-model="note.score"
+              type="number"
+              required
+              min="0"
+              step="1"
+              @blur="updateScore(note)"
+              @keyup.enter="updateScore(note)"
+            />
+
+            <div class="down button" @click="incrementScore(note, -1)">⬇</div>
+          </div>
+          <div class="content">
+            <input
+              class="title"
+              v-model="note.title"
+              @blur="updateTitle(note)"
+              @keyup.enter="updateTitle(note)"
+            />
+            <div>{{ note.body }}</div>
+          </div>
+          <div class="delete button" @click="removeNote(note)">×</div>
+        </li>
+      </transition-group>
       <input
-        class="new-note"
+        class="new-note-title"
         autofocus
         autocomplete="off"
-        placeholder="note"
-        v-model="newNote"
+        placeholder="create note"
+        v-model="newNoteTitle"
         @keyup.enter="addNote"
       />
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
-    <!-- <script src="https://unpkg.com/vue@2.6.10/dist/vue.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/vuefire@2.0.0-alpha.21/dist/vuefire.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
-    <!-- <script src="https://unpkg.com/vuefire@next/dist/vuefire.js"></script> -->
-    <script src="https://unpkg.com/vue-firestore@0.3.21/dist/vue-firestore.js"></script>
+
     <script src="app.js"></script>
   </body>
 </html>

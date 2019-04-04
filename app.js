@@ -11,65 +11,72 @@ firebase.initializeApp(config);
 
 const db = firebase.firestore();
 const notes = db.collection("notes");
-console.log("notes", notes);
-console.log("notes-sorted", notes.orderBy("score"));
+const notesSorted = notes.orderBy("score", "desc");
 
-//https://alligator.io/vuejs/vue-cloud-firestore/
-Vue.use(VueFirestore);
+// console.log("notes", notes);
+// console.log("notes-sorted", notesSorted);
+
+// notes.get().then(querySnapshot => {
+//   querySnapshot.forEach(function(doc) {
+//     // doc.data() is never undefined for query doc snapshots
+//     console.log(doc.id, " => ", doc.data());
+//   });
+// });
+
+Vue.use(Vuefire.firestorePlugin);
 
 var app = new Vue({
   // element to mount to
   el: "#app",
+
   // initial data
-  data: {
-    notes: {
-      title: "untitled",
-      body: "empty"
-    },
+  data: () => ({
+    notes: [],
     newNote: ""
+  }),
+
+  firestore: {
+    notes: notesSorted
   },
 
-  firestore: () => {
-    console.log("firestore");
-    return { notes: notes.orderBy("score", "desc") };
-  },
   // computed property for form validation state
   computed: {},
-  watch: {
-    notes: () => {
-      console.log("value");
-    }
-  },
+  watch: {},
+
   // methods
   methods: {
     addNote: function() {
-      console.log("hi");
-      var value = this.newNote && this.newNote.trim();
+      var value = this.newNoteTitle && this.newNoteTitle.trim();
       if (!value) {
         return;
       }
-      //this.$firestore.
       notes.add({
         title: value,
         score: 0
       });
-      this.newNote = "";
+      this.newNoteTitle = "";
     },
-    upVote: function(note) {
-      console.log(notes);
-      //this.$firestore.
-      notes.doc(note[".key"]).update({
-        score: (note.score || 0) + 1
+
+    removeNote: function(note) {
+      notes.doc(note.id).delete();
+    },
+
+    updateScore: function(note) {
+      notes.doc(note.id).update({
+        score: parseInt(note.score) || 0
       });
     },
-    downVote: function(note) {
-      //this.$firestore.
-      notes.doc(note[".key"]).update({
-        score: (note.score || 0) - 1
+
+    incrementScore: function(note, amount) {
+      notes.doc(note.id).update({
+        score: (note.score || 0) + amount
       });
     },
-    remove: function(note) {
-      notes.doc(note[".key"]).delete();
+
+    updateTitle: function(note) {
+      notes.doc(note.id).update({
+        title: note.title
+      });
     }
   }
 });
