@@ -32,7 +32,7 @@ var app = new Vue({
   // initial data
   data: () => ({
     notes: [],
-    newNote: ""
+    newNoteTitle: ""
   }),
 
   firestore: {

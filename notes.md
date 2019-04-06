@@ -1,12 +1,20 @@
 # Tools
 
+- jsDelivr
+  - [Homepage](https://www.jsdelivr.com/)
 - Vue.js
-  - [home](https://vuejs.org/)
+  - [Homepage](https://vuejs.org/)
+  - [Guide](https://vuejs.org/v2/guide/)
+  - [API Docs](https://vuejs.org/v2/guide/)
 - Vuefire 2.0.0-alpha.21
-  - [docs](https://github.com/vuejs/vuefire/blob/master/packages/documentation/docs/vuefire/getting-started.md)
+  - [Docs](https://github.com/vuejs/vuefire/blob/master/packages/documentation/docs/vuefire/getting-started.md)
 - Firebase
-  - Firestore
-  - [docs](https://firebase.google.com/docs/firestore/)
+  - [Homepage](https://firebase.google.com/)
+  - [Firebase Console](https://console.firebase.google.com/)
+- Firestore
+  - [Homepage](https://firebase.google.com/products/firestore/)
+  - [Firestore Docs](https://firebase.google.com/docs/firestore/)
+  - [Quickstart](https://firebase.google.com/docs/firestore/quickstart)
 
 # Vue
 
@@ -23,7 +31,8 @@
 - Writing
 - Watching
 
-# Next Steps
+# Sketch vs Production
 
-- Security
+- Securing Firestore Data with Access Rules
+  - [Docs](https://firebase.google.com/docs/firestore/security/rules-structure?authuser=0)
 - Proper Build Tools Vue CLI
