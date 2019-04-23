@@ -6,6 +6,7 @@
   - [Homepage](https://vuejs.org/)
   - [Guide](https://vuejs.org/v2/guide/)
   - [API Docs](https://vuejs.org/v2/guide/)
+  - [Scrimba Tutorials](https://scrimba.com/playlist/pXKqta)
 - Vuefire 2.0.0-alpha.21
   - [Docs](https://github.com/vuejs/vuefire/blob/master/packages/documentation/docs/vuefire/getting-started.md)
 - Firebase
@@ -31,8 +32,16 @@
 - Writing
 - Watching
 
+# Javascript
+
+- Promises
+- Async/Await
+  - [Hackernoon: Async/Await](https://hackernoon.com/6-reasons-why-javascripts-async-await-blows-promises-away-tutorial-c7ec10518dd9)
+
 # Sketch vs Production
 
-- Securing Firestore Data with Access Rules
+- Add error handling
+- Secure firestore with access rules
   - [Docs](https://firebase.google.com/docs/firestore/security/rules-structure?authuser=0)
-- Proper Build Tools Vue CLI
+- Setup project and build tools with vue-cli
+- Think about billing costs

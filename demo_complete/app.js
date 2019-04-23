@@ -13,16 +13,6 @@ const db = firebase.firestore();
 const notes = db.collection("notes");
 const notesSorted = notes.orderBy("score", "desc");
 
-// console.log("notes", notes);
-// console.log("notes-sorted", notesSorted);
-
-// notes.get().then(querySnapshot => {
-//   querySnapshot.forEach(function(doc) {
-//     // doc.data() is never undefined for query doc snapshots
-//     console.log(doc.id, " => ", doc.data());
-//   });
-// });
-
 Vue.use(Vuefire.firestorePlugin);
 
 var app = new Vue({
